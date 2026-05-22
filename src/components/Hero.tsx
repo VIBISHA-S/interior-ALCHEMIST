@@ -85,7 +85,7 @@ export default function Hero() {
         <h1 className="text-5xl md:text-7xl font-normal leading-tight mb-6 tracking-tight">
           Crafting spaces<br />that match your<br />style and needs.
         </h1>
-        <p className="text-lg text-gray-400 mb-8 max-w-md">
+        <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-8 max-w-md">
           We design beautiful interiors that feel like home. Transform your living spaces today with our expert touch.
         </p>
         <div className="flex items-center gap-4">

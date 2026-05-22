@@ -9,7 +9,7 @@ export default function Footer() {
           <Link href="/" className="text-3xl font-semibold tracking-tighter block mb-6">
             interior ALCHEMIST
           </Link>
-          <p className="text-gray-400 leading-relaxed">
+          <p className="text-gray-400 text-sm md:text-base leading-relaxed">
             A premium architecture and interior design studio crafting exceptional spaces for modern living and working.
           </p>
         </div>

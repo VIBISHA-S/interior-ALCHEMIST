@@ -34,7 +34,7 @@ export default function FAQ() {
         <div className="inline-block px-3 py-1 mb-6 text-xs text-gray-400 border border-gray-800 rounded-full">
           FAQ
         </div>
-        <h2 className="text-3xl md:text-5xl font-medium">Frequently asked questions</h2>
+        <h2 className="text-3xl md:text-5xl font-medium leading-tight">Frequently asked questions</h2>
       </div>
 
       <motion.div
@@ -53,7 +53,7 @@ export default function FAQ() {
               <AccordionTrigger className="text-left text-lg hover:no-underline py-6">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-gray-400 text-base leading-relaxed pb-6">
+              <AccordionContent className="text-gray-400 text-sm md:text-base leading-relaxed pb-6">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

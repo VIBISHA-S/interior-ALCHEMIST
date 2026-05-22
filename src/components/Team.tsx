@@ -7,17 +7,17 @@ const team = [
   {
     name: "Alex Rivera",
     role: "Lead Architect",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80",
   },
   {
     name: "Jessica Lin",
     role: "Interior Designer",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
   },
   {
     name: "Marcus Thorne",
     role: "Project Manager",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80",
   }
 ];
 
@@ -28,7 +28,7 @@ export default function Team() {
         <div className="inline-block px-3 py-1 mb-6 text-xs text-gray-400 border border-gray-800 rounded-full">
           Team
         </div>
-        <h2 className="text-3xl md:text-5xl font-medium">The dedicated<br/>team behind the craft</h2>
+        <h2 className="text-3xl md:text-5xl font-medium leading-tight">The dedicated<br/>team behind the craft</h2>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -61,7 +61,7 @@ export default function Team() {
               </div>
             </div>
             <h3 className="text-xl font-medium mb-1">{member.name}</h3>
-            <p className="text-gray-400">{member.role}</p>
+            <p className="text-gray-400 text-sm md:text-base leading-relaxed">{member.role}</p>
           </motion.div>
         ))}
       </div>

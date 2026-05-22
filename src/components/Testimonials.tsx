@@ -32,7 +32,7 @@ export default function Testimonials() {
         <div className="inline-block px-3 py-1 mb-6 text-xs text-gray-400 border border-gray-800 rounded-full">
           Testimonials
         </div>
-        <h2 className="text-3xl md:text-5xl font-medium">Hear from our clients</h2>
+        <h2 className="text-3xl md:text-5xl font-medium leading-tight">Hear from our clients</h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -51,7 +51,7 @@ export default function Testimonials() {
                   <Star key={j} className="w-4 h-4 fill-white text-white" />
                 ))}
               </div>
-              <p className="text-gray-300 text-lg leading-relaxed mb-8">
+              <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-6">
                 &quot;{testimonial.text}&quot;
               </p>
             </div>

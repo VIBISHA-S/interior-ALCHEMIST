@@ -23,10 +23,10 @@ export default function CTA() {
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         
         <div className="relative z-10 max-w-2xl mx-auto space-y-8">
-          <h2 className="text-4xl md:text-6xl font-medium leading-tight">
+          <h2 className="text-3xl md:text-5xl font-medium leading-tight">
             Let&apos;s create a space you&apos;ll love
           </h2>
-          <p className="text-gray-300 text-lg">
+          <p className="text-gray-300 text-sm md:text-base leading-relaxed">
             Ready to transform your home or office? Our team of expert designers is here to bring your vision to life.
           </p>
           <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-gray-200 text-base">
