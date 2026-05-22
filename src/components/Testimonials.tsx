@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
@@ -70,30 +70,71 @@ const testimonials = [
 
 export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(1);
+  const [mounted, setMounted] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+    const updateVisibleCards = () => {
+      if (window.innerWidth >= 1024) {
+        setVisibleCards(3);
+      } else if (window.innerWidth >= 768) {
+        setVisibleCards(2);
+      } else {
+        setVisibleCards(1);
+      }
+    };
+    updateVisibleCards();
+    window.addEventListener("resize", updateVisibleCards);
+    return () => window.removeEventListener("resize", updateVisibleCards);
+  }, []);
+
+  const totalPages = testimonials.length - visibleCards + 1;
 
   const handleScroll = () => {
     if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
+      const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
       const cardWidth = scrollRef.current.children[0]?.getBoundingClientRect().width || clientWidth;
-      const index = Math.round(scrollLeft / (cardWidth + 24)); // 24px is the flex gap
+      const step = cardWidth + 24; // 24px is the flex gap
+      
+      let index = Math.round(scrollLeft / step);
+      
+      // Boundary checking
+      if (scrollLeft <= 5) {
+        index = 0;
+      } else if (scrollLeft + clientWidth >= scrollWidth - 5) {
+        index = testimonials.length - visibleCards;
+      }
+      
+      index = Math.max(0, Math.min(testimonials.length - visibleCards, index));
       setActiveIndex(index);
     }
   };
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      const { clientWidth } = scrollRef.current;
-      const cardWidth = scrollRef.current.children[0]?.getBoundingClientRect().width || clientWidth;
-      const scrollAmount = direction === "left" ? -(cardWidth + 24) : (cardWidth + 24);
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      const cardWidth = scrollRef.current.children[0]?.getBoundingClientRect().width || scrollRef.current.clientWidth;
+      const step = cardWidth + 24;
+      
+      let targetIndex = activeIndex;
+      if (direction === "left") {
+        targetIndex = Math.max(0, activeIndex - 1);
+      } else {
+        targetIndex = Math.min(testimonials.length - visibleCards, activeIndex + 1);
+      }
+      
+      scrollRef.current.scrollTo({ left: targetIndex * step, behavior: "smooth" });
+      setActiveIndex(targetIndex);
     }
   };
 
   const scrollToActiveIndex = (index: number) => {
     if (scrollRef.current) {
       const cardWidth = scrollRef.current.children[0]?.getBoundingClientRect().width || scrollRef.current.clientWidth;
-      scrollRef.current.scrollTo({ left: index * (cardWidth + 24), behavior: "smooth" });
+      const step = cardWidth + 24;
+      
+      scrollRef.current.scrollTo({ left: index * step, behavior: "smooth" });
       setActiveIndex(index);
     }
   };
@@ -159,7 +200,7 @@ export default function Testimonials() {
       <div className="flex items-center justify-between mt-10 px-4">
         {/* Pagination Dots */}
         <div className="flex gap-2 max-w-[60%] overflow-x-auto scrollbar-none">
-          {testimonials.map((_, i) => (
+          {mounted && testimonials.slice(0, totalPages).map((_, i) => (
             <button
               key={i}
               onClick={() => scrollToActiveIndex(i)}
@@ -169,20 +210,34 @@ export default function Testimonials() {
               aria-label={`Go to testimonial ${i + 1}`}
             />
           ))}
+          {!mounted && testimonials.map((_, i) => (
+            <div
+              key={i}
+              className={`w-2 h-2 rounded-full shrink-0 ${
+                i === 0 ? "bg-white w-6" : "bg-white/20"
+              }`}
+            />
+          ))}
         </div>
 
         {/* Action Arrows */}
         <div className="flex gap-3">
           <button
             onClick={() => scroll("left")}
-            className="w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] hover:bg-white/[0.08] active:scale-95 transition-all flex items-center justify-center text-white cursor-pointer"
+            disabled={activeIndex === 0}
+            className={`w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center text-white transition-all ${
+              activeIndex === 0 ? "opacity-30 cursor-not-allowed" : "hover:bg-white/[0.08] active:scale-95 cursor-pointer"
+            }`}
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] hover:bg-white/[0.08] active:scale-95 transition-all flex items-center justify-center text-white cursor-pointer"
+            disabled={activeIndex >= testimonials.length - visibleCards}
+            className={`w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center text-white transition-all ${
+              activeIndex >= testimonials.length - visibleCards ? "opacity-30 cursor-not-allowed" : "hover:bg-white/[0.08] active:scale-95 cursor-pointer"
+            }`}
             aria-label="Next testimonial"
           >
             <ChevronRight className="w-5 h-5" />

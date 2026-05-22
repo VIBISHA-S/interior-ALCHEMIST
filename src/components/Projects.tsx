@@ -63,7 +63,7 @@ export default function Projects() {
                   Year: {project.year}
                 </span>
               </div>
-              <Button variant="outline" className="rounded-full px-6 py-4 bg-transparent border-gray-600 hover:bg-white hover:text-black transition-all text-xs">
+              <Button variant="outline" className="rounded-full px-6 py-4 bg-transparent border-gray-600 hover:bg-white hover:text-black dark:hover:bg-white dark:hover:text-black transition-all text-xs">
                 View project
               </Button>
             </div>
@@ -82,7 +82,7 @@ export default function Projects() {
       </div>
 
       <div className="mt-16 text-center">
-        <Button variant="outline" className="rounded-full px-8 py-6 bg-transparent border-gray-600 hover:bg-white hover:text-black transition-all text-base">
+        <Button variant="outline" className="rounded-full px-8 py-6 bg-transparent border-gray-600 hover:bg-white hover:text-black dark:hover:bg-white dark:hover:text-black transition-all text-base">
           View all projects
         </Button>
       </div>

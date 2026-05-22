@@ -16,6 +16,14 @@ export default function Navbar() {
     { name: "FAQ", href: "#faq" },
   ];
 
+  // Reset scrollbar to top on refresh
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   // Disable body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {

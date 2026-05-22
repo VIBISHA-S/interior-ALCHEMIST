@@ -92,7 +92,7 @@ export default function Hero() {
           <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-gray-200 text-base font-normal">
             Our work
           </Button>
-          <Button variant="outline" className="rounded-full px-8 py-6 bg-transparent border-gray-600 hover:bg-white hover:text-black text-base font-normal">
+          <Button variant="outline" className="rounded-full px-8 py-6 bg-transparent border-gray-600 hover:bg-white hover:text-black dark:hover:bg-white dark:hover:text-black text-base font-normal">
             Let&apos;s talk
           </Button>
         </div>
