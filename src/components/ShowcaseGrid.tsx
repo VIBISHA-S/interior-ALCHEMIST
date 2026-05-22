@@ -13,7 +13,7 @@ const images = [
 
 export default function ShowcaseGrid() {
   return (
-    <section className="py-12 overflow-hidden bg-[#0a0a0a]">
+    <section className="hidden md:block py-12 overflow-hidden bg-[#0a0a0a]">
       <div className="flex justify-center items-end gap-4 px-4 min-w-max md:min-w-0">
         {images.map((src, i) => {
           // Create an alternating height pattern to mimic the reference image
