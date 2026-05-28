@@ -6,8 +6,9 @@ export default function Footer() {
     <footer className="bg-[#0a0a0a] pt-24 pb-12 px-6 border-t border-gray-800">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-16 mb-24">
         <div className="max-w-md">
-          <Link href="/" className="text-3xl font-semibold tracking-tighter block mb-6">
-            interior ALCHEMIST
+          <Link href="/" className="text-3xl tracking-tighter block mb-6 hover:opacity-80 transition-opacity">
+            <span className="font-light text-white/75">interior</span>{" "}
+            <span className="font-bold bg-gradient-to-r from-white via-white to-[#c5a880] text-transparent bg-clip-text">ALCHEMIST</span>
           </Link>
           <p className="text-gray-400 text-sm md:text-base leading-relaxed">
             A premium architecture and interior design studio crafting exceptional spaces for modern living and working.
@@ -46,7 +47,10 @@ export default function Footer() {
       
       {/* Huge Background Text as per reference image */}
       <div className="max-w-7xl mx-auto w-full mt-12 text-center overflow-hidden">
-        <h1 className="text-[10vw] font-bold tracking-tighter text-gray-800/20 select-none whitespace-nowrap">
+        <h1 
+          className="text-[10vw] font-bold tracking-tighter select-none whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-b from-white/25 via-[#c5a880]/10 to-transparent drop-shadow-[0_8px_32px_rgba(255,255,255,0.05)]"
+          style={{ WebkitTextStroke: "1px rgba(255, 255, 255, 0.08)" }}
+        >
           interior ALCHEMIST
         </h1>
       </div>

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Check } from "lucide-react";
 
 const column1Cards = [
   {
@@ -80,21 +81,38 @@ export default function Hero() {
         className="flex-1 max-w-2xl"
       >
         <div className="inline-block px-3 py-1 mb-6 text-xs text-gray-400 border border-gray-800 rounded-full">
-          Architecture & Design
+          Concept Studio
         </div>
-        <h1 className="text-5xl md:text-7xl font-normal leading-tight mb-6 tracking-tight">
-          Crafting spaces<br />that match your<br />style and needs.
+        <h1 className="text-4xl md:text-6xl font-normal leading-tight mb-6 tracking-tight">
+          Your Home Should Feel Like A Masterpiece You Get To Live Inside.
         </h1>
-        <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-8 max-w-md">
-          We design beautiful interiors that feel like home. Transform your living spaces today with our expert touch.
+        <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-8 max-w-xl">
+          Interior Alchemist designs emotionally refined living spaces for modern homeowners who want more than ordinary interiors. If you want a home that feels luxurious, intentional, peaceful, and deeply personal.
         </p>
-        <div className="flex items-center gap-4">
-          <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-gray-200 text-base font-normal">
-            Our work
+        <div className="flex flex-col gap-4">
+          <Button className="w-fit rounded-full px-8 py-6 bg-white text-black hover:bg-gray-200 text-base font-normal">
+            Book Your Free Design Consultation
           </Button>
-          <Button variant="outline" className="rounded-full px-8 py-6 bg-transparent border-gray-600 hover:bg-white hover:text-black dark:hover:bg-white dark:hover:text-black text-base font-normal">
-            Let&apos;s talk
-          </Button>
+          <p className="text-xs text-gray-500 max-w-md pl-1 mt-1">
+            Limited projects are taken each month to maintain execution quality.
+          </p>
+        </div>
+
+        {/* Trust Line */}
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 border-t border-white/[0.06] pt-8 max-w-xl">
+          {[
+            "India’s 1st Conceptual Interior Design Studio",
+            "End-to-End Execution",
+            "Structured Timelines & Process Clarity",
+            "Premium Material & Finish Selection"
+          ].map((text, idx) => (
+            <div key={idx} className="flex items-center gap-3 text-xs text-gray-400">
+              <span className="w-5 h-5 rounded-full border border-white/10 bg-white/[0.03] flex items-center justify-center text-white shrink-0">
+                <Check className="w-3 h-3 text-white/80" strokeWidth={2.5} />
+              </span>
+              <span>{text}</span>
+            </div>
+          ))}
         </div>
       </motion.div>
 
@@ -102,19 +120,19 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.4 }}
-        className="flex-1 w-full max-w-[600px] h-[500px] sm:h-[600px] md:h-[650px] relative overflow-hidden"
+        className="flex-1 w-full max-w-[600px] h-[320px] sm:h-[450px] md:h-[600px] relative overflow-hidden"
       >
         {/* Top and Bottom Fades for smooth card entry/exit */}
-        <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
-
-        {/* 2-Column Scrolling Grid */}
-        <div className="grid grid-cols-2 gap-4 h-full">
+        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+ 
+        {/* 2-Column Scrolling Grid (Touch-transparent on mobile to prevent scroll capture) */}
+        <div className="grid grid-cols-2 gap-4 h-full pointer-events-none md:pointer-events-auto">
           {/* Column 1 (Scrolls Up) */}
           <div className="relative h-full overflow-hidden">
-            <div className="flex flex-col animate-marquee-up hover:[animation-play-state:paused] cursor-pointer">
+            <div className="flex flex-col animate-marquee-up md:hover:[animation-play-state:paused] cursor-default">
               {/* First Set */}
-              <div className="flex flex-col gap-4 pb-4">
+              <div className="flex flex-col gap-4 pb-4 shrink-0">
                 {column1Cards.map((card) => (
                   <div 
                     key={`col1-a-${card.id}`}
@@ -136,7 +154,7 @@ export default function Hero() {
                 ))}
               </div>
               {/* Duplicate Set for Infinite Scroll */}
-              <div className="flex flex-col gap-4 pb-4">
+              <div className="flex flex-col gap-4 pb-4 shrink-0">
                 {column1Cards.map((card) => (
                   <div 
                     key={`col1-b-${card.id}`}
@@ -159,12 +177,12 @@ export default function Hero() {
               </div>
             </div>
           </div>
-
+ 
           {/* Column 2 (Scrolls Down) */}
           <div className="relative h-full overflow-hidden">
-            <div className="flex flex-col animate-marquee-down hover:[animation-play-state:paused] cursor-pointer">
+            <div className="flex flex-col animate-marquee-down md:hover:[animation-play-state:paused] cursor-default">
               {/* First Set */}
-              <div className="flex flex-col gap-4 pb-4">
+              <div className="flex flex-col gap-4 pb-4 shrink-0">
                 {column2Cards.map((card) => (
                   <div 
                     key={`col2-a-${card.id}`}
@@ -186,7 +204,7 @@ export default function Hero() {
                 ))}
               </div>
               {/* Duplicate Set for Infinite Scroll */}
-              <div className="flex flex-col gap-4 pb-4">
+              <div className="flex flex-col gap-4 pb-4 shrink-0">
                 {column2Cards.map((card) => (
                   <div 
                     key={`col2-b-${card.id}`}

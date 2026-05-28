@@ -22,16 +22,21 @@ export default function CTA() {
         />
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         
-        <div className="relative z-10 max-w-2xl mx-auto space-y-8">
+        <div className="relative z-10 max-w-3xl mx-auto space-y-8">
           <h2 className="text-3xl md:text-5xl font-medium leading-tight">
-            Let&apos;s create a space you&apos;ll love
+            The Right Home Changes The Way You Live Every Day
           </h2>
           <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-            Ready to transform your home or office? Our team of expert designers is here to bring your vision to life.
+            Let&apos;s create a space that feels elegant, functional, personal, and completely aligned with your lifestyle.
           </p>
-          <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-gray-200 text-base">
-            Get in touch
-          </Button>
+          <div className="flex flex-col items-center gap-4">
+            <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-gray-200 text-base font-normal">
+              Book Your Free Consultation
+            </Button>
+            <p className="text-xs text-gray-400">
+              Speak with Interior Alchemist about your project, vision, and transformation goals.
+            </p>
+          </div>
         </div>
       </motion.div>
     </section>

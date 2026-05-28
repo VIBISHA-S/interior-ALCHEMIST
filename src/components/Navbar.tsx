@@ -81,8 +81,11 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Brand logo on left */}
-          <div className="text-xl md:text-2xl font-normal tracking-tighter text-white z-50">
-            <Link href="/" onClick={() => setIsOpen(false)}>interior ALCHEMIST</Link>
+          <div className="text-xl md:text-2xl tracking-tighter text-white z-50">
+            <Link href="/" onClick={() => setIsOpen(false)} className="hover:opacity-80 transition-opacity">
+              <span className="font-light text-white/75">interior</span>{" "}
+              <span className="font-bold bg-gradient-to-r from-white via-white to-[#c5a880] text-transparent bg-clip-text">ALCHEMIST</span>
+            </Link>
           </div>
 
           {/* Desktop view: Floating Glass Pill Container */}
