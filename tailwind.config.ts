@@ -68,12 +68,12 @@ const config = {
           to: { height: "0" },
         },
         "marquee-up": {
-          "0%": { transform: "translateY(0%)" },
-          "100%": { transform: "translateY(-50%)" },
+          "0%": { transform: "translate3d(0, 0, 0)" },
+          "100%": { transform: "translate3d(0, -50%, 0)" },
         },
         "marquee-down": {
-          "0%": { transform: "translateY(-50%)" },
-          "100%": { transform: "translateY(0%)" },
+          "0%": { transform: "translate3d(0, -50%, 0)" },
+          "100%": { transform: "translate3d(0, 0, 0)" },
         },
       },
       animation: {

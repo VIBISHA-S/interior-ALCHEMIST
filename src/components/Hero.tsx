@@ -130,7 +130,7 @@ export default function Hero() {
         <div className="grid grid-cols-2 gap-4 h-full pointer-events-none md:pointer-events-auto">
           {/* Column 1 (Scrolls Up) */}
           <div className="relative h-full overflow-hidden">
-            <div className="flex flex-col animate-marquee-up md:hover:[animation-play-state:paused] cursor-default">
+            <div className="flex flex-col h-max animate-marquee-up md:hover:[animation-play-state:paused] cursor-default [will-change:transform] transform-gpu">
               {/* First Set */}
               <div className="flex flex-col gap-4 pb-4 shrink-0">
                 {column1Cards.map((card) => (
@@ -180,7 +180,7 @@ export default function Hero() {
  
           {/* Column 2 (Scrolls Down) */}
           <div className="relative h-full overflow-hidden">
-            <div className="flex flex-col animate-marquee-down md:hover:[animation-play-state:paused] cursor-default">
+            <div className="flex flex-col h-max animate-marquee-down md:hover:[animation-play-state:paused] cursor-default [will-change:transform] transform-gpu">
               {/* First Set */}
               <div className="flex flex-col gap-4 pb-4 shrink-0">
                 {column2Cards.map((card) => (
