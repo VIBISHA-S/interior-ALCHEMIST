@@ -75,12 +75,17 @@ const config = {
           "0%": { transform: "translate3d(0, -50%, 0)" },
           "100%": { transform: "translate3d(0, 0, 0)" },
         },
+        "marquee-left": {
+          "0%": { transform: "translate3d(0, 0, 0)" },
+          "100%": { transform: "translate3d(-50%, 0, 0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "marquee-up": "marquee-up 30s linear infinite",
         "marquee-down": "marquee-down 30s linear infinite",
+        "marquee-left": "marquee-left 25s linear infinite",
       },
     },
   },

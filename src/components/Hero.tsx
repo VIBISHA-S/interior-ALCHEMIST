@@ -72,6 +72,17 @@ const column2Cards = [
   },
 ];
 
+const horizontalCards = [
+  column1Cards[0],
+  column2Cards[0],
+  column1Cards[1],
+  column2Cards[1],
+  column1Cards[2],
+  column2Cards[2],
+  column1Cards[3],
+  column2Cards[3],
+];
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen pt-32 pb-16 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
@@ -119,11 +130,66 @@ export default function Hero() {
         </div>
       </motion.div>
 
+      {/* Mobile view: Horizontal Scrolling Marquee */}
+      <div className="sm:hidden w-full h-[150px] relative overflow-hidden mt-8 pointer-events-none">
+        {/* Left and Right Fades for smooth entry/exit */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10" />
+        
+        {/* Horizontal Animating Row */}
+        <div className="flex w-max animate-marquee-left">
+          {/* First Set */}
+          <div className="flex gap-4 pr-4 shrink-0">
+            {horizontalCards.map((card) => (
+              <div 
+                key={`horiz-a-${card.id}`}
+                className="relative w-[180px] h-[130px] rounded-[24px] overflow-hidden group border border-white/5 bg-neutral-900/50"
+              >
+                <Image 
+                  src={card.image} 
+                  alt={card.title}
+                  fill
+                  sizes="180px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3">
+                  <h3 className="text-[10px] font-normal text-white mb-0.5 tracking-wide">{card.title}</h3>
+                  <p className="text-[8px] text-gray-400 font-normal">{card.subtitle}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Duplicate Set for Infinite Scroll */}
+          <div className="flex gap-4 pr-4 shrink-0">
+            {horizontalCards.map((card) => (
+              <div 
+                key={`horiz-b-${card.id}`}
+                className="relative w-[180px] h-[130px] rounded-[24px] overflow-hidden group border border-white/5 bg-neutral-900/50"
+              >
+                <Image 
+                  src={card.image} 
+                  alt={card.title}
+                  fill
+                  sizes="180px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3">
+                  <h3 className="text-[10px] font-normal text-white mb-0.5 tracking-wide">{card.title}</h3>
+                  <p className="text-[8px] text-gray-400 font-normal">{card.subtitle}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.4 }}
-        className="flex-1 w-full max-w-[600px] h-[220px] sm:h-[450px] md:h-[600px] relative overflow-hidden"
+        className="hidden sm:block flex-1 w-full max-w-[600px] h-[450px] md:h-[600px] relative overflow-hidden"
       >
         {/* Top and Bottom Fades for smooth card entry/exit */}
         <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
