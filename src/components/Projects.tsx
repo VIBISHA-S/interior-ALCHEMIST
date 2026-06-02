@@ -4,6 +4,7 @@ import { MouseEvent } from "react";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const projects = [
   {
@@ -39,6 +40,14 @@ function ProjectCard({ project, i }: { project: typeof projects[0]; i: number })
     mouseY.set(clientY - top);
   }
 
+  function handleTouch(e: React.TouchEvent) {
+    const touch = e.touches[0];
+    if (!touch) return;
+    const { left, top } = e.currentTarget.getBoundingClientRect();
+    mouseX.set(touch.clientX - left);
+    mouseY.set(touch.clientY - top);
+  }
+
   const isEven = i % 2 === 0;
 
   return (
@@ -48,6 +57,8 @@ function ProjectCard({ project, i }: { project: typeof projects[0]; i: number })
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
       onMouseMove={handleMouseMove}
+      onTouchStart={handleTouch}
+      onTouchMove={handleTouch}
       className="bg-[#0e0e0e]/60 border border-white/[0.03] backdrop-blur-md rounded-[32px] p-6 md:p-8 flex flex-col md:flex-row items-center gap-8 md:gap-10 hover:border-[#c5a880]/20 hover:bg-[#121212] transition-colors duration-300 relative group overflow-hidden"
     >
       {/* Gold spotlight hover background */}
@@ -130,9 +141,11 @@ export default function Projects() {
         <h3 className="text-xl md:text-2xl font-light text-white leading-relaxed">
           Your Dream Home Deserves More Than Just Ordinary Design
         </h3>
-        <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-gray-200 text-base font-normal">
-          Book A Consultation
-        </Button>
+        <Link href="/book" className="inline-block">
+          <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-[#c5a880] active:bg-[#c5a880] hover:text-black hover:shadow-[0_0_25px_rgba(197,168,128,0.35)] transition-all duration-300 text-base font-normal">
+            Book A Consultation
+          </Button>
+        </Link>
       </div>
     </section>
   );

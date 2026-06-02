@@ -40,6 +40,14 @@ function PainPointCard({ text, span, index }: { text: string; span: string; inde
     mouseY.set(clientY - top);
   }
 
+  function handleTouch(e: React.TouchEvent) {
+    const touch = e.touches[0];
+    if (!touch) return;
+    const { left, top } = e.currentTarget.getBoundingClientRect();
+    mouseX.set(touch.clientX - left);
+    mouseY.set(touch.clientY - top);
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
@@ -47,6 +55,8 @@ function PainPointCard({ text, span, index }: { text: string; span: string; inde
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       onMouseMove={handleMouseMove}
+      onTouchStart={handleTouch}
+      onTouchMove={handleTouch}
       className={`group relative overflow-hidden bg-[#0d0d0d]/60 backdrop-blur-md border border-white/[0.03] rounded-2xl p-5 hover:border-red-900/30 hover:bg-gradient-to-b hover:from-red-950/[0.02] hover:to-transparent transition-colors duration-300 flex items-start gap-4 ${span}`}
     >
       {/* Red hover spotlight background */}

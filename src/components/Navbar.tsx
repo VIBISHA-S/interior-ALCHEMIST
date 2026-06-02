@@ -9,6 +9,14 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    setIsOpen(false);
+    if (window.location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   const navLinks = [
     { name: "Our services", href: "#services" },
     { name: "About", href: "#about" },
@@ -44,8 +52,15 @@ export default function Navbar() {
         setIsScrolled(false);
       }
 
+      // If at the very top of the page, clear active nav link highlight
+      if (window.scrollY < 120) {
+        setActiveSection("");
+        return;
+      }
+
       const sections = ["services", "about", "portfolio", "faq"];
       const scrollPosition = window.scrollY + 200;
+      let matched = false;
 
       for (const section of sections) {
         const el = document.getElementById(section);
@@ -54,9 +69,14 @@ export default function Navbar() {
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
             setActiveSection(`#${section}`);
+            matched = true;
             break;
           }
         }
+      }
+
+      if (!matched) {
+        setActiveSection("");
       }
     };
 
@@ -82,7 +102,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Brand logo on left */}
           <div className="text-xl md:text-2xl tracking-tighter text-white z-50">
-            <Link href="/" onClick={() => setIsOpen(false)} className="hover:opacity-80 transition-opacity">
+            <Link href="/" onClick={handleLogoClick} className="hover:opacity-80 transition-opacity">
               <span className="font-light text-white/75">interior</span>{" "}
               <span className="font-bold bg-gradient-to-r from-white via-white to-[#c5a880] text-transparent bg-clip-text">ALCHEMIST</span>
             </Link>

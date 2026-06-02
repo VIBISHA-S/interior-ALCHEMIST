@@ -37,6 +37,14 @@ function BenefitCard({ benefit, index }: { benefit: typeof benefits[0]; index: n
     mouseY.set(clientY - top);
   }
 
+  function handleTouch(e: React.TouchEvent) {
+    const touch = e.touches[0];
+    if (!touch) return;
+    const { left, top } = e.currentTarget.getBoundingClientRect();
+    mouseX.set(touch.clientX - left);
+    mouseY.set(touch.clientY - top);
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
@@ -44,6 +52,8 @@ function BenefitCard({ benefit, index }: { benefit: typeof benefits[0]; index: n
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.08 }}
       onMouseMove={handleMouseMove}
+      onTouchStart={handleTouch}
+      onTouchMove={handleTouch}
       className="group relative overflow-hidden bg-gradient-to-b from-[#0f0f0f] to-[#070707] border border-white/[0.03] rounded-[20px] p-5 hover:border-[#c5a880]/20 hover:bg-[#121212] transition-colors duration-300 flex flex-col justify-between min-h-[170px]"
     >
       {/* Dynamic gold spotlight background effect */}

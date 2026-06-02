@@ -47,6 +47,14 @@ export default function Differentiation() {
     mouseY.set(clientY - top);
   }
 
+  function handleTouch(e: React.TouchEvent) {
+    const touch = e.touches[0];
+    if (!touch) return;
+    const { left, top } = e.currentTarget.getBoundingClientRect();
+    mouseX.set(touch.clientX - left);
+    mouseY.set(touch.clientY - top);
+  }
+
   return (
     <section className="py-24 px-6 max-w-5xl mx-auto border-t border-white/[0.04] relative overflow-hidden" id="differentiation">
       {/* Background Aurora */}
@@ -97,6 +105,8 @@ export default function Differentiation() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           onMouseMove={handleMouseMove}
+          onTouchStart={handleTouch}
+          onTouchMove={handleTouch}
           className="bg-[#0e0e0e]/80 border border-[#c5a880]/20 rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.4)] relative overflow-hidden group transition-all duration-300 hover:border-[#c5a880]/30"
         >
           {/* Gold spotlight hover background */}

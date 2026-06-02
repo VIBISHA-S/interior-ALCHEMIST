@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 const column1Cards = [
   {
@@ -90,9 +91,11 @@ export default function Hero() {
           Interior Alchemist designs emotionally refined living spaces for modern homeowners who want more than ordinary interiors. If you want a home that feels luxurious, intentional, peaceful, and deeply personal.
         </p>
         <div className="flex flex-col gap-4">
-          <Button className="w-fit rounded-full px-8 py-6 bg-white text-black hover:bg-gray-200 text-base font-normal">
-            Book Your Free Design Consultation
-          </Button>
+          <Link href="/book" className="w-fit">
+            <Button className="w-full rounded-full px-8 py-6 bg-white text-black hover:bg-[#c5a880] active:bg-[#c5a880] hover:text-black hover:shadow-[0_0_25px_rgba(197,168,128,0.35)] transition-all duration-300 text-base font-normal">
+              Book Your Free Design Consultation
+            </Button>
+          </Link>
           <p className="text-xs text-gray-500 max-w-md pl-1 mt-1">
             Limited projects are taken each month to maintain execution quality.
           </p>
@@ -107,10 +110,10 @@ export default function Hero() {
             "Premium Material & Finish Selection"
           ].map((text, idx) => (
             <div key={idx} className="flex items-center gap-3 text-xs text-gray-400">
-              <span className="w-5 h-5 rounded-full border border-white/10 bg-white/[0.03] flex items-center justify-center text-white shrink-0">
-                <Check className="w-3 h-3 text-white/80" strokeWidth={2.5} />
+              <span className="w-5 h-5 rounded-full border border-[#c5a880]/30 bg-[#c5a880]/5 flex items-center justify-center text-[#c5a880] shrink-0">
+                <Check className="w-3 h-3 text-[#c5a880]" strokeWidth={3} />
               </span>
-              <span>{text}</span>
+              <span className="font-light">{text}</span>
             </div>
           ))}
         </div>
@@ -120,7 +123,7 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.4 }}
-        className="flex-1 w-full max-w-[600px] h-[320px] sm:h-[450px] md:h-[600px] relative overflow-hidden"
+        className="flex-1 w-full max-w-[600px] h-[220px] sm:h-[450px] md:h-[600px] relative overflow-hidden"
       >
         {/* Top and Bottom Fades for smooth card entry/exit */}
         <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
@@ -136,7 +139,7 @@ export default function Hero() {
                 {column1Cards.map((card) => (
                   <div 
                     key={`col1-a-${card.id}`}
-                    className="relative w-full aspect-[4/5] rounded-[24px] md:rounded-[32px] overflow-hidden group border border-white/5 bg-neutral-900/50"
+                    className="relative w-full h-[160px] sm:h-auto sm:aspect-[4/5] rounded-[24px] md:rounded-[32px] overflow-hidden group border border-white/5 bg-neutral-900/50"
                   >
                     <Image 
                       src={card.image} 
@@ -158,7 +161,7 @@ export default function Hero() {
                 {column1Cards.map((card) => (
                   <div 
                     key={`col1-b-${card.id}`}
-                    className="relative w-full aspect-[4/5] rounded-[24px] md:rounded-[32px] overflow-hidden group border border-white/5 bg-neutral-900/50"
+                    className="relative w-full h-[160px] sm:h-auto sm:aspect-[4/5] rounded-[24px] md:rounded-[32px] overflow-hidden group border border-white/5 bg-neutral-900/50"
                   >
                     <Image 
                       src={card.image} 
@@ -186,7 +189,7 @@ export default function Hero() {
                 {column2Cards.map((card) => (
                   <div 
                     key={`col2-a-${card.id}`}
-                    className="relative w-full aspect-[4/5] rounded-[24px] md:rounded-[32px] overflow-hidden group border border-white/5 bg-neutral-900/50"
+                    className="relative w-full h-[160px] sm:h-auto sm:aspect-[4/5] rounded-[24px] md:rounded-[32px] overflow-hidden group border border-white/5 bg-neutral-900/50"
                   >
                     <Image 
                       src={card.image} 
@@ -208,7 +211,7 @@ export default function Hero() {
                 {column2Cards.map((card) => (
                   <div 
                     key={`col2-b-${card.id}`}
-                    className="relative w-full aspect-[4/5] rounded-[24px] md:rounded-[32px] overflow-hidden group border border-white/5 bg-neutral-900/50"
+                    className="relative w-full h-[160px] sm:h-auto sm:aspect-[4/5] rounded-[24px] md:rounded-[32px] overflow-hidden group border border-white/5 bg-neutral-900/50"
                   >
                     <Image 
                       src={card.image} 

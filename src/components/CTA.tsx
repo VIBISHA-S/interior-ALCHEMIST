@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CTA() {
   return (
@@ -30,9 +31,11 @@ export default function CTA() {
             Let&apos;s create a space that feels elegant, functional, personal, and completely aligned with your lifestyle.
           </p>
           <div className="flex flex-col items-center gap-4">
-            <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-gray-200 text-base font-normal">
-              Book Your Free Consultation
-            </Button>
+            <Link href="/book" className="inline-block">
+              <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-[#c5a880] active:bg-[#c5a880] hover:text-black hover:shadow-[0_0_25px_rgba(197,168,128,0.35)] transition-all duration-300 text-base font-normal">
+                Book Your Free Consultation
+              </Button>
+            </Link>
             <p className="text-xs text-gray-400">
               Speak with Interior Alchemist about your project, vision, and transformation goals.
             </p>
