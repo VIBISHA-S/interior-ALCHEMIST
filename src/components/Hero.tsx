@@ -72,16 +72,6 @@ const column2Cards = [
   },
 ];
 
-const horizontalCards = [
-  column1Cards[0],
-  column2Cards[0],
-  column1Cards[1],
-  column2Cards[1],
-  column1Cards[2],
-  column2Cards[2],
-  column1Cards[3],
-  column2Cards[3],
-];
 
 export default function Hero() {
   return (
@@ -130,57 +120,113 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Mobile view: Horizontal Scrolling Marquee */}
-      <div className="sm:hidden w-full h-[150px] relative overflow-hidden mt-8 pointer-events-none">
-        {/* Left and Right Fades for smooth entry/exit */}
-        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10" />
-        
-        {/* Horizontal Animating Row */}
-        <div className="flex w-max animate-marquee-left">
-          {/* First Set */}
-          <div className="flex gap-4 pr-4 shrink-0">
-            {horizontalCards.map((card) => (
-              <div 
-                key={`horiz-a-${card.id}`}
-                className="relative w-[180px] h-[130px] rounded-[24px] overflow-hidden group border border-white/5 bg-neutral-900/50"
-              >
-                <Image 
-                  src={card.image} 
-                  alt={card.title}
-                  fill
-                  sizes="180px"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
-                <div className="absolute bottom-3 left-3 right-3">
-                  <h3 className="text-[10px] font-normal text-white mb-0.5 tracking-wide">{card.title}</h3>
-                  <p className="text-[8px] text-gray-400 font-normal">{card.subtitle}</p>
+      {/* Mobile view: Two-Row Opposite Horizontal Scrolling Marquee */}
+      <div className="sm:hidden w-full flex flex-col gap-4 mt-8 pointer-events-none">
+        {/* Row 1 (Scrolls Left) */}
+        <div className="w-full h-[110px] relative overflow-hidden">
+          {/* Left and Right Fades */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10" />
+          
+          <div className="flex w-max animate-marquee-left">
+            {/* First Set */}
+            <div className="flex gap-4 pr-4 shrink-0">
+              {column1Cards.map((card) => (
+                <div 
+                  key={`horiz-a-${card.id}`}
+                  className="relative w-[160px] h-[110px] rounded-[20px] overflow-hidden group border border-white/5 bg-neutral-900/50"
+                >
+                  <Image 
+                    src={card.image} 
+                    alt={card.title}
+                    fill
+                    sizes="160px"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+                  <div className="absolute bottom-2.5 left-2.5 right-2.5">
+                    <h3 className="text-[10px] font-normal text-white mb-0.5 tracking-wide">{card.title}</h3>
+                    <p className="text-[8px] text-gray-400 font-normal">{card.subtitle}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            {/* Duplicate Set */}
+            <div className="flex gap-4 pr-4 shrink-0">
+              {column1Cards.map((card) => (
+                <div 
+                  key={`horiz-a-dup-${card.id}`}
+                  className="relative w-[160px] h-[110px] rounded-[20px] overflow-hidden group border border-white/5 bg-neutral-900/50"
+                >
+                  <Image 
+                    src={card.image} 
+                    alt={card.title}
+                    fill
+                    sizes="160px"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+                  <div className="absolute bottom-2.5 left-2.5 right-2.5">
+                    <h3 className="text-[10px] font-normal text-white mb-0.5 tracking-wide">{card.title}</h3>
+                    <p className="text-[8px] text-gray-400 font-normal">{card.subtitle}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          {/* Duplicate Set for Infinite Scroll */}
-          <div className="flex gap-4 pr-4 shrink-0">
-            {horizontalCards.map((card) => (
-              <div 
-                key={`horiz-b-${card.id}`}
-                className="relative w-[180px] h-[130px] rounded-[24px] overflow-hidden group border border-white/5 bg-neutral-900/50"
-              >
-                <Image 
-                  src={card.image} 
-                  alt={card.title}
-                  fill
-                  sizes="180px"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
-                <div className="absolute bottom-3 left-3 right-3">
-                  <h3 className="text-[10px] font-normal text-white mb-0.5 tracking-wide">{card.title}</h3>
-                  <p className="text-[8px] text-gray-400 font-normal">{card.subtitle}</p>
+        </div>
+
+        {/* Row 2 (Scrolls Right) */}
+        <div className="w-full h-[110px] relative overflow-hidden">
+          {/* Left and Right Fades */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10" />
+          
+          <div className="flex w-max animate-marquee-right">
+            {/* First Set */}
+            <div className="flex gap-4 pr-4 shrink-0">
+              {column2Cards.map((card) => (
+                <div 
+                  key={`horiz-b-${card.id}`}
+                  className="relative w-[160px] h-[110px] rounded-[20px] overflow-hidden group border border-white/5 bg-neutral-900/50"
+                >
+                  <Image 
+                    src={card.image} 
+                    alt={card.title}
+                    fill
+                    sizes="160px"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+                  <div className="absolute bottom-2.5 left-2.5 right-2.5">
+                    <h3 className="text-[10px] font-normal text-white mb-0.5 tracking-wide">{card.title}</h3>
+                    <p className="text-[8px] text-gray-400 font-normal">{card.subtitle}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            {/* Duplicate Set */}
+            <div className="flex gap-4 pr-4 shrink-0">
+              {column2Cards.map((card) => (
+                <div 
+                  key={`horiz-b-dup-${card.id}`}
+                  className="relative w-[160px] h-[110px] rounded-[20px] overflow-hidden group border border-white/5 bg-neutral-900/50"
+                >
+                  <Image 
+                    src={card.image} 
+                    alt={card.title}
+                    fill
+                    sizes="160px"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+                  <div className="absolute bottom-2.5 left-2.5 right-2.5">
+                    <h3 className="text-[10px] font-normal text-white mb-0.5 tracking-wide">{card.title}</h3>
+                    <p className="text-[8px] text-gray-400 font-normal">{card.subtitle}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
