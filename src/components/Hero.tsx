@@ -133,9 +133,9 @@ export default function Hero() {
         <div className="grid grid-cols-2 gap-4 h-full pointer-events-none md:pointer-events-auto">
           {/* Column 1 (Scrolls Up) */}
           <div className="relative h-full overflow-hidden">
-            <div className="flex flex-col h-max animate-marquee-up md:hover:[animation-play-state:paused] cursor-default [will-change:transform] transform-gpu">
+            <div className="flex flex-col shrink-0 animate-marquee-up md:hover:[animation-play-state:paused] cursor-default [will-change:transform] transform-gpu">
               {/* First Set */}
-              <div className="flex flex-col gap-4 pb-4 shrink-0">
+              <div className="flex flex-col gap-4 pb-4 shrink-0 h-[880px] sm:h-auto">
                 {column1Cards.map((card) => (
                   <div 
                     key={`col1-a-${card.id}`}
@@ -157,7 +157,7 @@ export default function Hero() {
                 ))}
               </div>
               {/* Duplicate Set for Infinite Scroll */}
-              <div className="flex flex-col gap-4 pb-4 shrink-0">
+              <div className="flex flex-col gap-4 pb-4 shrink-0 h-[880px] sm:h-auto">
                 {column1Cards.map((card) => (
                   <div 
                     key={`col1-b-${card.id}`}
@@ -183,9 +183,9 @@ export default function Hero() {
  
           {/* Column 2 (Scrolls Down) */}
           <div className="relative h-full overflow-hidden">
-            <div className="flex flex-col h-max animate-marquee-down md:hover:[animation-play-state:paused] cursor-default [will-change:transform] transform-gpu">
+            <div className="flex flex-col shrink-0 animate-marquee-down md:hover:[animation-play-state:paused] cursor-default [will-change:transform] transform-gpu">
               {/* First Set */}
-              <div className="flex flex-col gap-4 pb-4 shrink-0">
+              <div className="flex flex-col gap-4 pb-4 shrink-0 h-[880px] sm:h-auto">
                 {column2Cards.map((card) => (
                   <div 
                     key={`col2-a-${card.id}`}
@@ -207,7 +207,7 @@ export default function Hero() {
                 ))}
               </div>
               {/* Duplicate Set for Infinite Scroll */}
-              <div className="flex flex-col gap-4 pb-4 shrink-0">
+              <div className="flex flex-col gap-4 pb-4 shrink-0 h-[880px] sm:h-auto">
                 {column2Cards.map((card) => (
                   <div 
                     key={`col2-b-${card.id}`}
