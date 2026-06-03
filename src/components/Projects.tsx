@@ -75,6 +75,24 @@ function ProjectCard({ project, i }: { project: typeof projects[0]; i: number })
         }}
       />
 
+      {/* Gold border glow highlight */}
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-[32px] opacity-0 group-hover:opacity-100 transition duration-300"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              150px circle at ${mouseX}px ${mouseY}px,
+              rgba(197, 168, 128, 0.15),
+              transparent 80%
+            )
+          `,
+          padding: "1px",
+          maskImage: "linear-gradient(black, black) content-box, linear-gradient(black, black)",
+          maskComposite: "exclude",
+          WebkitMaskComposite: "xor",
+        }}
+      />
+
       <div className={`flex-1 space-y-4 ${isEven ? "order-2 md:order-1" : "order-2 md:order-2"}`}>
         <h3 className="text-2xl md:text-3xl font-medium leading-tight tracking-tight">{project.title}</h3>
         <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-lg font-light">
