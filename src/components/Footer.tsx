@@ -48,8 +48,11 @@ export default function Footer() {
       {/* Huge Background Text as per reference image */}
       <div className="max-w-7xl mx-auto w-full mt-12 text-center overflow-hidden">
         <h1 
-          className="text-[10vw] font-bold tracking-tighter select-none whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-b from-white/25 via-[#c5a880]/10 to-transparent drop-shadow-[0_8px_32px_rgba(255,255,255,0.05)]"
-          style={{ WebkitTextStroke: "1px rgba(255, 255, 255, 0.08)" }}
+          className="font-bold tracking-tighter select-none whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-b from-white/25 via-[#c5a880]/10 to-transparent drop-shadow-[0_8px_32px_rgba(255,255,255,0.05)]"
+          style={{ 
+            WebkitTextStroke: "1px rgba(255, 255, 255, 0.08)",
+            fontSize: "clamp(2rem, 8.2vw, 7.5rem)"
+          }}
         >
           interior ALCHEMIST
         </h1>
