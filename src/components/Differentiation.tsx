@@ -1,170 +1,49 @@
-"use client";
+import Reveal from "./Reveal";
+import Shape from "./Shape";
 
-import { MouseEvent } from "react";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { Check, X } from "lucide-react";
-
-const comparisons = [
-  {
-    category: "Approach",
-    ordinary: "Furniture-focused",
-    alchemist: "Experience-focused",
-  },
-  {
-    category: "Concept",
-    ordinary: "Generic modular layouts",
-    alchemist: "Deeply personalized concepts",
-  },
-  {
-    category: "Relationship",
-    ordinary: "Transactional approach",
-    alchemist: "Lifestyle transformation",
-  },
-  {
-    category: "Management",
-    ordinary: "Execution confusion",
-    alchemist: "Structured process clarity",
-  },
-  {
-    category: "Design DNA",
-    ordinary: "Trend-driven design",
-    alchemist: "Timeless sophistication",
-  },
-  {
-    category: "Execution",
-    ordinary: "Vendor coordination stress",
-    alchemist: "Seamless end-to-end execution",
-  },
+const rows = [
+  { category: "Approach", ordinary: "Furniture-focused", alchemist: "Experience-focused" },
+  { category: "Concept", ordinary: "Generic modular layouts", alchemist: "Deeply personalised concepts" },
+  { category: "Relationship", ordinary: "Transactional", alchemist: "Lifestyle transformation" },
+  { category: "Management", ordinary: "Execution confusion", alchemist: "Structured process clarity" },
+  { category: "Design DNA", ordinary: "Trend-driven", alchemist: "Timeless sophistication" },
+  { category: "Execution", ordinary: "Vendor coordination stress", alchemist: "Seamless end-to-end delivery" },
 ];
 
 export default function Differentiation() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
-  function handleTouch(e: React.TouchEvent) {
-    const touch = e.touches[0];
-    if (!touch) return;
-    const { left, top } = e.currentTarget.getBoundingClientRect();
-    mouseX.set(touch.clientX - left);
-    mouseY.set(touch.clientY - top);
-  }
-
   return (
-    <section className="py-24 px-6 max-w-5xl mx-auto border-t border-white/[0.04] relative overflow-hidden" id="differentiation">
-      {/* Background Aurora */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-[#c5a880]/[0.02] rounded-full blur-[130px] pointer-events-none -z-10" />
+    <section className="relative isolate overflow-hidden bg-cream py-20 md:py-36 px-6 md:px-10" id="differentiation">
+      <Shape kind="hatching" className="right-[4%] top-10 w-[clamp(11.25rem,20*var(--vw),18.75rem)]" />
+      <div className="max-w-6xl mx-auto">
+        <Reveal>
+          <p className="eyebrow text-taupe">The difference</p>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <h2 className="headline text-ink text-[clamp(2.8rem,6.5*var(--vw),6rem)] mt-8">
+            The difference is <em>felt</em> immediately
+          </h2>
+        </Reveal>
 
-      <div className="flex flex-col items-center text-center mb-16">
-        <div className="inline-block px-3 py-1 mb-6 text-xs text-gray-400 border border-gray-800 rounded-full">
-          The Difference
-        </div>
-        <h2 className="text-3xl md:text-5xl font-medium leading-tight tracking-tight">
-          The Difference Is Felt Immediately.
-        </h2>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-        {/* Left Side: Ordinary Interior Firms (Muted & Desaturated) */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-[#070707]/80 border border-white/[0.02] rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-between opacity-50 hover:opacity-75 transition-opacity duration-300"
-        >
-          <div className="space-y-8">
-            <h3 className="text-xl md:text-2xl font-light text-gray-600 pb-4 border-b border-white/[0.02] tracking-wide">
-              Ordinary Interior Firms
-            </h3>
-            <div className="space-y-6">
-              {comparisons.map((row, idx) => (
-                <div key={idx} className="flex items-start gap-4 text-gray-600">
-                  <X className="w-4 h-4 text-gray-700 shrink-0 mt-1" strokeWidth={2} />
-                  <div className="space-y-1">
-                    <span className="text-xs uppercase tracking-wider text-gray-700 font-medium block">
-                      {row.category}
-                    </span>
-                    <p className="text-sm md:text-base font-light">{row.ordinary}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <Reveal delay={0.2} className="mt-16">
+          {/* Three columns from md up; on phones each row stacks: category, then the two answers */}
+          <div className="hidden md:grid grid-cols-3 gap-x-10 eyebrow border-b border-ink pb-4">
+            <span className="text-taupe">Compare</span>
+            <span className="text-taupe">Ordinary firms</span>
+            <span className="text-ink">Interior Alchemist</span>
           </div>
-        </motion.div>
-
-        {/* Right Side: Interior Alchemist (Premium Gold Glow) */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          onMouseMove={handleMouseMove}
-          onTouchStart={handleTouch}
-          onTouchMove={handleTouch}
-          className="bg-[#0e0e0e]/80 border border-[#c5a880]/20 rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.4)] relative overflow-hidden group transition-all duration-300 hover:border-[#c5a880]/30"
-        >
-          {/* Gold spotlight hover background */}
-          <motion.div
-            className="pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition duration-300"
-            style={{
-              background: useMotionTemplate`
-                radial-gradient(
-                  350px circle at ${mouseX}px ${mouseY}px,
-                  rgba(197, 168, 128, 0.05),
-                  transparent 80%
-                )
-              `,
-            }}
-          />
-
-          {/* Gold border glow highlight */}
-          <motion.div
-            className="pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition duration-300"
-            style={{
-              background: useMotionTemplate`
-                radial-gradient(
-                  150px circle at ${mouseX}px ${mouseY}px,
-                  rgba(197, 168, 128, 0.25),
-                  transparent 80%
-                )
-              `,
-              padding: "1px",
-              maskImage: "linear-gradient(black, black) content-box, linear-gradient(black, black)",
-              maskComposite: "exclude",
-              WebkitMaskComposite: "xor",
-            }}
-          />
-          
-          <div className="space-y-8 z-10">
-            <h3 className="text-xl md:text-2xl font-medium text-white pb-4 border-b border-white/[0.06] flex items-center justify-between tracking-wide">
-              <span>Interior Alchemist</span>
-              <span className="text-xs text-[#c5a880] bg-[#c5a880]/10 border border-[#c5a880]/20 px-3 py-1 rounded-full font-light tracking-wider uppercase">
-                Premium Choice
+          {rows.map((r) => (
+            <div
+              key={r.category}
+              className="grid md:grid-cols-3 gap-y-1.5 md:gap-x-10 md:items-baseline py-5 border-b border-ink/20 border-t md:border-t-0 first:border-t-0"
+            >
+              <span className="eyebrow text-taupe">{r.category}</span>
+              <span className="text-taupe/80 line-through decoration-ink/40 text-base md:text-lg">
+                {r.ordinary}
               </span>
-            </h3>
-            <div className="space-y-6">
-              {comparisons.map((row, idx) => (
-                <div key={idx} className="flex items-start gap-4 text-white group-hover:translate-x-0.5 transition-transform duration-300">
-                  <span className="w-5.5 h-5.5 rounded-full border border-[#c5a880]/30 bg-[#c5a880]/5 flex items-center justify-center text-[#c5a880] shrink-0 mt-0.5 group-hover:border-[#c5a880] transition-colors duration-300">
-                    <Check className="w-3.5 h-3.5 text-[#c5a880]" strokeWidth={2.5} />
-                  </span>
-                  <div className="space-y-1">
-                    <span className="text-xs uppercase tracking-wider text-[#c5a880]/80 font-medium block">
-                      {row.category}
-                    </span>
-                    <p className="text-sm md:text-base font-normal">{row.alchemist}</p>
-                  </div>
-                </div>
-              ))}
+              <span className="font-serif text-2xl md:text-3xl text-ink">{r.alchemist}</span>
             </div>
-          </div>
-        </motion.div>
+          ))}
+        </Reveal>
       </div>
     </section>
   );

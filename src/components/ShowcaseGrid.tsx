@@ -1,42 +1,38 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
+import Reveal from "./Reveal";
+import Shape from "./Shape";
+import Stripe from "./Stripe";
 
 const images = [
-  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80",
-  "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80",
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
-  "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=600&q=80",
-  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80",
+  { src: "/work/pooja-heritage-carved.webp", alt: "Carved wooden pooja room with an inlaid marble floor" },
+  { src: "/work/niche-buddha.webp", alt: "Lit niche with a Buddha sculpture beside a checkerboard floor" },
+  { src: "/work/kitchen-k2-teal-island.webp", alt: "Kitchen with a teal island and wood cabinetry" },
+  { src: "/work/foyer-cane.webp", alt: "Foyer with cane-panelled shoe storage" },
+  { src: "/work/balcony-heritage-checker.webp", alt: "Balcony lounge with a checkerboard floor at sunset" },
+  { src: "/work/exterior-curved-facade.webp", alt: "Residence with a sweeping curved white facade" },
 ];
 
+// "THE LIFESTYLE" marquee with the photo strip hung beneath it.
 export default function ShowcaseGrid() {
+  const word = Array(4).fill("The lifestyle").join("    ");
   return (
-    <section className="hidden md:block py-12 overflow-hidden bg-[#0a0a0a]">
-      <div className="flex justify-center items-end gap-4 px-4 min-w-max md:min-w-0">
-        {images.map((src, i) => {
-          // Create an alternating height pattern to mimic the reference image
-          const heights = ["h-[200px]", "h-[300px]", "h-[250px]", "h-[320px]", "h-[220px]"];
-          
-          return (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className={`relative w-[180px] sm:w-[220px] md:w-[260px] ${heights[i]} rounded-t-full rounded-b-3xl overflow-hidden shrink-0 group`}
-            >
-              <Image 
-                src={src}
-                alt={`Showcase ${i + 1}`}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
-              />
-            </motion.div>
-          );
-        })}
+    <section className="relative isolate overflow-hidden bg-sand pt-6 pb-14 md:pb-20">
+      <Shape kind="asterisk" className="right-[3%] bottom-4 w-[clamp(5rem,8*var(--vw),7.5rem)]" />
+
+      <div aria-hidden className="flex whitespace-nowrap display uppercase text-[clamp(3.6rem,10*var(--vw),9rem)] text-ink select-none">
+        <span className="animate-marquee-left pr-8">{word}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span className="animate-marquee-left pr-8">{word}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      </div>
+      <Stripe className="mt-1 h-[2px]" />
+
+      <div className="relative mt-3 flex gap-3 md:gap-4 px-6 overflow-x-auto md:overflow-visible md:justify-center [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {images.map((img, i) => (
+          <Reveal key={img.src} delay={i * 0.08} className={`shrink-0 ${i % 2 ? "md:-mt-5" : "md:mt-5"}`}>
+            <div className="group relative w-[10.625rem] md:w-[9.375rem] lg:w-[11.875rem] aspect-[3/4] overflow-hidden">
+              <Image src={img.src} alt={img.alt} fill sizes="220px" className="photo" />
+            </div>
+          </Reveal>
+        ))}
       </div>
     </section>
   );

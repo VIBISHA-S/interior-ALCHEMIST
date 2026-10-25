@@ -1,116 +1,64 @@
-"use client";
+import ArcSeam from "./ArcSeam";
+import Reveal from "./Reveal";
+import Shape from "./Shape";
 
-import { MouseEvent } from "react";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-
-const proofItems = [
-  { value: "12+", label: "Years Experience" },
-  { value: "150+", label: "Homes Designed & Executed" },
-  { value: "Premium", label: "Material Standards" },
-  { value: "Structured", label: "Execution Process" },
-  { value: "Transparent", label: "Communication" }
+const proof = [
+  { value: "12+", label: "Years experience" },
+  { value: "150+", label: "Homes designed & executed" },
+  { value: "Premium", label: "Material standards" },
+  { value: "Structured", label: "Execution process" },
+  { value: "Transparent", label: "Communication" },
 ];
 
-function ProofCard({ item, index }: { item: typeof proofItems[0]; index: number }) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
-  function handleTouch(e: React.TouchEvent) {
-    const touch = e.touches[0];
-    if (!touch) return;
-    const { left, top } = e.currentTarget.getBoundingClientRect();
-    mouseX.set(touch.clientX - left);
-    mouseY.set(touch.clientY - top);
-  }
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.08 }}
-      onMouseMove={handleMouseMove}
-      onTouchStart={handleTouch}
-      onTouchMove={handleTouch}
-      className="group relative overflow-hidden bg-gradient-to-b from-[#0f0f0f] to-[#070707] border border-white/[0.03] rounded-2xl p-6 hover:border-[#c5a880]/20 hover:bg-[#121212] transition-colors duration-300 flex flex-col items-center justify-center min-h-[120px] cursor-pointer"
-    >
-      {/* Dynamic gold spotlight background effect */}
-      <motion.div
-        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300"
-        style={{
-          background: useMotionTemplate`
-            radial-gradient(
-              160px circle at ${mouseX}px ${mouseY}px,
-              rgba(197, 168, 128, 0.03),
-              transparent 80%
-            )
-          `,
-        }}
-      />
-      
-      {/* Light gold border glow effect */}
-      <motion.div
-        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300"
-        style={{
-          background: useMotionTemplate`
-            radial-gradient(
-              85px circle at ${mouseX}px ${mouseY}px,
-              rgba(197, 168, 128, 0.15),
-              transparent 80%
-            )
-          `,
-          padding: "1px",
-          maskImage: "linear-gradient(black, black) content-box, linear-gradient(black, black)",
-          maskComposite: "exclude",
-          WebkitMaskComposite: "xor",
-        }}
-      />
-
-      <span className="text-2xl md:text-3xl font-semibold mb-2 text-white group-hover:scale-105 group-hover:text-[#c5a880] transition-all duration-300 z-10">
-        {item.value}
-      </span>
-      <span className="text-[10px] text-gray-500 uppercase tracking-widest text-center group-hover:text-gray-300 transition-colors duration-300 z-10 font-light">
-        {item.label}
-      </span>
-    </motion.div>
-  );
-}
+const trust = [
+  "India’s 1st conceptual interior design studio",
+  "End-to-end execution",
+  "Structured timelines & process clarity",
+  "Premium material & finish selection",
+];
 
 export default function About() {
   return (
-    <section className="py-24 px-6 max-w-6xl mx-auto flex flex-col items-center text-center" id="about">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-16"
-      >
-        <div className="inline-block px-3 py-1 mb-6 text-xs text-gray-400 border border-gray-800 rounded-full">
-          Social Proof
-        </div>
-        <h2 className="text-3xl md:text-5xl font-medium leading-tight max-w-4xl mx-auto">
-          Chosen By Homeowners Who Value Quality, Clarity, And Professional Execution
-        </h2>
-      </motion.div>
+    <section className="relative isolate overflow-hidden bg-cream py-20 md:py-36 px-6" id="about">
+      <Shape kind="quarters" className="right-[4%] bottom-16 w-[clamp(5.625rem,9*var(--vw),8.75rem)]" />
+      <ArcSeam half="bottom" side="left" />
+      <div className="max-w-5xl mx-auto text-center">
+        <Reveal>
+          <p className="eyebrow text-taupe">About Interior Alchemist</p>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <h2 className="headline text-ink text-[clamp(2.6rem,6.5*var(--vw),5.5rem)] mt-8">
+            We design <em>emotionally</em> refined homes for people who want <em>more</em> than ordinary interiors — and we <em>build</em> them too
+          </h2>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <p className="mt-10 max-w-2xl mx-auto text-taupe text-base md:text-lg leading-relaxed">
+            Interior Alchemist designs and executes living spaces for modern homeowners. One studio handles the concept, the materials, the timeline and the site, so the home you imagined is the home you move into.
+          </p>
+        </Reveal>
 
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 w-full"
-      >
-        {proofItems.map((item, index) => (
-          <ProofCard key={index} item={item} index={index} />
-        ))}
-      </motion.div>
+        <Reveal delay={0.25} className="mt-16">
+          <ul className="grid grid-cols-2 md:grid-cols-5 border-t border-b border-ink/20 divide-y md:divide-y-0 md:divide-x divide-ink/20">
+            {proof.map((p) => (
+              <li key={p.label} className="py-6 px-3 last:col-span-2 md:last:col-span-1">
+                <span className="font-serif text-3xl md:text-4xl text-ink block">{p.value}</span>
+                <span className="eyebrow text-taupe mt-2 block">{p.label}</span>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <Reveal delay={0.3}>
+          <ul className="mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-x-8 gap-y-3 eyebrow text-ink text-left mx-auto w-fit sm:w-auto">
+            {trust.map((t) => (
+              <li key={t} className="flex items-center gap-3 leading-relaxed">
+                <span aria-hidden className="w-1.5 h-1.5 bg-oxblood rotate-45" />
+                {t}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </div>
     </section>
   );
 }

@@ -1,91 +1,105 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer base {
+  :root {
+    --background: 31 44% 94%;
+    --foreground: 0 0% 4%;
+    --primary: 0 0% 4%;
+    --primary-foreground: 31 44% 94%;
+    --muted: 42 31% 90%;
+    --muted-foreground: 30 10% 42%;
+    --destructive: 357 55% 16%;
+    --destructive-foreground: 31 44% 94%;
+    --border: 0 0% 4%;
+    --input: 0 0% 4%;
+    --ring: 0 0% 4%;
+    --radius: 0rem;
+  }
+  * {
+    @apply border-border;
+  }
+  /* Site scale. Every size is in rem or `--vw`, so these two values scale the whole site.
+     Phones stay at 100% so body text and form fields stay readable; tablets render at 90%. */
+  html {
+    scroll-behavior: smooth;
+    font-size: 100%;
+    --vw: 1vw;
+  }
+  @media (min-width: 768px) {
+    html {
+      font-size: 90%;
+      --vw: 0.9vw;
+    }
+  }
+  /* Laptops and desktops: 90% on a 1440x900 screen, shrinking in proportion on smaller or shorter
+     ones (e.g. a 1920x1080 laptop at 150% display scaling is a 1280x720 screen), never under 12px. */
+  @media (min-width: 1024px) {
+    html {
+      font-size: clamp(12px, min(1vw, 1.6vh), 14.4px);
+      --vw: min(0.9vw, 1.44vh);
+    }
+  }
+  body {
+    @apply bg-cream text-ink font-sans font-light antialiased;
+  }
+  ::selection {
+    @apply bg-ink text-cream;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-ink ring-offset-2 ring-offset-cream;
   }
 }
 
-@layer base {
-  .theme {
-    --font-heading: var(--font-sans);
-    --font-sans: var(--font-sans);
+@layer components {
+  .eyebrow {
+    @apply font-mono text-[0.75rem] md:text-[max(0.6875rem,10px)] uppercase tracking-[0.22em];
   }
-  :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+  /* Condensed uppercase headline with italic serif accent words, e.g. WORK THAT <em>Speaks</em> */
+  .headline {
+    @apply font-condensed uppercase leading-[0.92] tracking-[0.01em];
   }
-  .dark {
-    --background: 0 0% 6%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
-    --accent: 0 0% 15%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 0 0% 90%;
-    --chart-2: 0 0% 60%;
-    --chart-3: 0 0% 40%;
-    --chart-4: 0 0% 30%;
-    --chart-5: 0 0% 20%;
-    --sidebar: 0 0% 9%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 0 0% 48.8%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 15%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 14%;
-    --sidebar-ring: 0 0% 83.1%;
+  .headline em {
+    @apply font-serif italic normal-case tracking-normal;
+    font-size: 1.08em;
   }
-  * {
-    @apply border-border outline-ring/50;
+  /* Heavy sans wordmark and statements, as in the mockup */
+  .display {
+    @apply font-display font-extrabold tracking-[-0.03em] leading-[0.9];
   }
-  body {
-    @apply bg-background text-foreground;
-    font-family: var(--font-outfit), sans-serif;
+  .btn {
+    @apply inline-flex items-center justify-center gap-3 font-mono text-[0.75rem] md:text-[max(0.6875rem,10px)] uppercase tracking-[0.22em] px-7 py-4 border transition-colors duration-300;
+  }
+  .btn-ink {
+    @apply bg-ink text-cream border-ink hover:bg-transparent hover:text-ink;
+  }
+  .btn-outline {
+    @apply bg-transparent text-ink border-ink/70 hover:bg-ink hover:text-cream hover:border-ink;
+  }
+  .polaroid {
+    @apply bg-blush p-3 pb-10 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)];
+  }
+  .photo {
+    @apply object-cover;
+  }
+}
+
+/* Muted-until-hovered photos only where there is a pointer to hover with; phones get full colour. */
+@media (hover: hover) {
+  .photo {
+    @apply grayscale-[0.6] transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:scale-[1.04];
+  }
+}
+
+.animate-marquee-left,
+.animate-marquee-right {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none;
   }
 }
