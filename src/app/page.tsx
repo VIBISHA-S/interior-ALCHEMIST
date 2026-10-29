@@ -18,6 +18,7 @@ import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import Pin from "@/components/Pin";
+import type { JSX } from "react";
 
 type Entry = {
   C: () => JSX.Element;
