@@ -2,12 +2,11 @@ import Shape from "./Shape";
 import Reveal from "./Reveal";
 
 const painPoints = [
-  "Contractor chaos and poor coordination",
-  "Delayed timelines with zero accountability",
-  "Cheap-looking finishes after huge investments",
-  "Generic modular designs with no personality",
-  "Endless follow-ups and communication gaps",
-  "Spaces that look good online but fail in real life",
+  "Designs copied from catalogues and trends",
+  "Beautiful rooms that don't feel connected",
+  "Expensive materials without a cohesive vision",
+  "Standardised interiors with no individuality",
+  "Spaces that look impressive but don't reflect your lifestyle",
 ];
 
 export default function Problem() {
@@ -18,17 +17,17 @@ export default function Problem() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20">
         <div className="lg:col-span-5">
           <Reveal>
-            <p className="eyebrow text-cream/70">The reality</p>
+            <p className="eyebrow text-cream/70">The biggest problem</p>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="headline text-[clamp(2.8rem,6*var(--vw),5.5rem)] mt-8">
-              Most interior projects become <em>stressful</em> long before they become <em>beautiful.</em>
+              A <em>beautiful</em> home isn&apos;t always a home that feels like <em>yours.</em>
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="font-serif italic text-2xl md:text-3xl mt-10">Your home is deeply personal.</p>
+            <p className="font-serif italic text-2xl md:text-3xl mt-10">Your home deserves more than beautiful interiors.</p>
             <p className="mt-3 text-cream/70 max-w-sm leading-relaxed">
-              You deserve a team that handles it with clarity, accountability, and care from day one.
+              The finest materials and the latest designs aren&apos;t enough on their own. Without one idea holding them together, a home can still end up looking like everyone else&apos;s.
             </p>
           </Reveal>
         </div>

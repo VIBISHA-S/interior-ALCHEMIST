@@ -12,9 +12,9 @@ const images = [
   { src: "/work/exterior-curved-facade.webp", alt: "Residence with a sweeping curved white facade" },
 ];
 
-// "THE LIFESTYLE" marquee with the photo strip hung beneath it.
+// "STYLE THE LIFESTYLE" marquee with the photo strip hung beneath it.
 export default function ShowcaseGrid() {
-  const word = Array(4).fill("The lifestyle").join("    ");
+  const word = Array(4).fill("Style the lifestyle").join("    ");
   return (
     <section className="relative isolate overflow-hidden bg-sand pt-6 pb-14 md:pb-20">
       <Shape kind="asterisk" className="right-[3%] bottom-4 w-[clamp(5rem,8*var(--vw),7.5rem)]" />

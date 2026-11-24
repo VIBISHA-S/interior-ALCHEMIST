@@ -3,10 +3,10 @@ import Reveal from "./Reveal";
 import Shape from "./Shape";
 
 const benefits = [
-  { title: <><em>Beautifully</em> personalized</>, text: "Spaces tailored to your lifestyle and aesthetic." },
-  { title: <><em>Professionally</em> executed</>, text: "One team coordinates everything from concept to completion." },
-  { title: <><em>Transparent</em> process</>, text: "Clear timelines, approvals and communication at every stage." },
-  { title: <>Peace of <em>mind</em></>, text: "Minimal chaos on site. Maximum calm at home." },
+  { title: <><em>Designed</em> around you</>, text: "Every concept begins with your personality, preferences and lifestyle, never a catalogue of ready-made designs." },
+  { title: <><em>Built</em> with precision</>, text: "From custom details to final finishes, every element is executed to stay true to the original vision." },
+  { title: <><em>Clear</em> at every stage</>, text: "Defined timelines, transparent communication and a dedicated point of contact throughout your project." },
+  { title: <><em>Calm,</em> start to finish</>, text: "From first concept to final handover, we manage everything, so you can simply enjoy creating your home." },
 ];
 
 export default function Services() {

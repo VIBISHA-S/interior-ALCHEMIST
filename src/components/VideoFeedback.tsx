@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { Play, X } from "lucide-react";
 import Reveal from "./Reveal";
+import ArcSeam from "./ArcSeam";
 import Shape from "./Shape";
 
 // Add a `videoUrl` to a client to give its card a play button and open the video modal.
@@ -34,10 +35,11 @@ export default function VideoFeedback() {
 
   return (
     <section className="relative isolate overflow-hidden bg-cream py-20 md:py-36 px-6 md:px-10" id="video-feedbacks">
+      <ArcSeam half="top" side="left" />
       <Shape kind="leaf" className="-right-6 top-16 w-[clamp(8.125rem,14*var(--vw),13.75rem)] rotate-6" />
       <div className="max-w-7xl mx-auto">
         <Reveal>
-          <p className="eyebrow text-taupe">Video reviews</p>
+          <p className="eyebrow text-taupe">Videos from our clients</p>
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="headline text-ink text-[clamp(2.8rem,6.5*var(--vw),6rem)] mt-8 max-w-3xl">

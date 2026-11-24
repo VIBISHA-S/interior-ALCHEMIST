@@ -5,7 +5,7 @@ import Shape from "./Shape";
 
 export default function Team() {
   return (
-    <section className="relative isolate overflow-hidden bg-cream py-20 md:py-36 px-6" id="team">
+    <section className="relative isolate overflow-hidden bg-sand py-20 md:py-36 px-6" id="team">
       <Shape kind="leaf" className="right-[6%] bottom-16 w-[clamp(8.125rem,14*var(--vw),13.75rem)] -scale-x-100" />
       <ArcSeam half="bottom" side="left" />
       <div className="max-w-3xl mx-auto text-center">
@@ -14,7 +14,7 @@ export default function Team() {
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="headline text-ink text-[clamp(2.8rem,6.5*var(--vw),6rem)] mt-8">
-            The <em>visionary</em> behind the craft
+            The <em>mind</em> behind the concept
           </h2>
         </Reveal>
 
@@ -35,9 +35,17 @@ export default function Team() {
 
         <Reveal delay={0.3}>
           <p className="eyebrow text-taupe mt-10">Founder & principal director</p>
-          <p className="mt-6 text-taupe leading-relaxed max-w-2xl mx-auto">
-            Deepak established Interior Alchemist with a single-minded vision: to craft bespoke, high-clarity spaces that merge architectural elegance with personal expression. Under his direction the studio turns design challenges into functional art, with an emphasis on sophisticated detail and timeless luxury.
-          </p>
+          <div className="mt-6 space-y-4 text-taupe leading-relaxed max-w-2xl mx-auto">
+            <p>
+              Deepak believes that a truly remarkable home isn&apos;t defined by how expensive it looks, but by how thoughtfully it is designed.
+            </p>
+            <p>
+              With over 12 years of experience and 150+ homes behind him, his approach goes beyond creating beautiful spaces. He focuses on developing a unique concept for every home, bringing together individuality, functionality and design.
+            </p>
+            <p>
+              He personally leads the creative vision behind every Interior Alchemist project, ensuring each home has a distinct identity and reflects the people who live in it.
+            </p>
+          </div>
         </Reveal>
       </div>
     </section>

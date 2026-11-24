@@ -2,17 +2,17 @@ import Reveal from "./Reveal";
 import Shape from "./Shape";
 
 const rows = [
-  { category: "Approach", ordinary: "Furniture-focused", alchemist: "Experience-focused" },
-  { category: "Concept", ordinary: "Generic modular layouts", alchemist: "Deeply personalised concepts" },
-  { category: "Relationship", ordinary: "Transactional", alchemist: "Lifestyle transformation" },
-  { category: "Management", ordinary: "Execution confusion", alchemist: "Structured process clarity" },
-  { category: "Design DNA", ordinary: "Trend-driven", alchemist: "Timeless sophistication" },
-  { category: "Execution", ordinary: "Vendor coordination stress", alchemist: "Seamless end-to-end delivery" },
+  { category: "Approach", ordinary: "Furniture-focused", alchemist: "Concept-focused" },
+  { category: "Concept", ordinary: "Generic modular layouts", alchemist: "A unique identity for every home" },
+  { category: "Relationship", ordinary: "A transaction", alchemist: "A personalised design journey" },
+  { category: "Management", ordinary: "Multiple vendors, multiple responsibilities", alchemist: "One studio, complete ownership" },
+  { category: "Design DNA", ordinary: "Trend-driven", alchemist: "Timeless and personal" },
+  { category: "Execution", ordinary: "Design and execution handled separately", alchemist: "One vision, from concept to completion" },
 ];
 
 export default function Differentiation() {
   return (
-    <section className="relative isolate overflow-hidden bg-cream py-20 md:py-36 px-6 md:px-10" id="differentiation">
+    <section className="relative isolate overflow-hidden bg-sand py-20 md:py-36 px-6 md:px-10" id="differentiation">
       <Shape kind="hatching" className="right-[4%] top-10 w-[clamp(11.25rem,20*var(--vw),18.75rem)]" />
       <div className="max-w-6xl mx-auto">
         <Reveal>
@@ -20,7 +20,7 @@ export default function Differentiation() {
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="headline text-ink text-[clamp(2.8rem,6.5*var(--vw),6rem)] mt-8">
-            The difference is <em>felt</em> immediately
+            The difference is in the <em>thinking</em> behind the design.
           </h2>
         </Reveal>
 

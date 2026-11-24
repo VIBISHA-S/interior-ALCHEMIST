@@ -4,7 +4,7 @@ import Reveal from "./Reveal";
 
 const testimonials = [
   {
-    title: "The entire process felt surprisingly stress-free",
+    title: "The entire process felt completely stress-free",
     text: "We were worried about delays and coordination before starting. But everything felt organised and transparent from the beginning. The final result exceeded our expectations.",
     name: "Sarah Jenkins",
     role: "Homeowner",
@@ -36,7 +36,7 @@ export default function Testimonials() {
           <div className="flex items-center gap-6 eyebrow text-cream/70">
             <span>Kind words</span>
             <span className="flex-1 h-px bg-cream/40" />
-            <span>From homeowners</span>
+            <span>From our clients</span>
           </div>
         </Reveal>
 

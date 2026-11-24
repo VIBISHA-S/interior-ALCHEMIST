@@ -1,40 +1,43 @@
-import ArcSeam from "./ArcSeam";
 import Reveal from "./Reveal";
 import Shape from "./Shape";
 
 const proof = [
-  { value: "12+", label: "Years experience" },
-  { value: "150+", label: "Homes designed & executed" },
-  { value: "Premium", label: "Material standards" },
-  { value: "Structured", label: "Execution process" },
-  { value: "Transparent", label: "Communication" },
+  { value: "12+", label: "Years of experience" },
+  { value: "150+", label: "Homes designed & built" },
+  { value: "30+", label: "Years master artisans" },
+  { value: "15", label: "Years of warranty support" },
+  { value: "100+", label: "Interior design concepts created" },
 ];
 
 const trust = [
-  "India’s 1st conceptual interior design studio",
-  "End-to-end execution",
-  "Structured timelines & process clarity",
-  "Premium material & finish selection",
+  "End-to-end interiors",
+  "Personalized professional interior designers",
+  "Certified quality raw material",
+  "Custom factory-made fine finishes",
 ];
 
 export default function About() {
   return (
     <section className="relative isolate overflow-hidden bg-cream py-20 md:py-36 px-6" id="about">
       <Shape kind="quarters" className="right-[4%] bottom-16 w-[clamp(5.625rem,9*var(--vw),8.75rem)]" />
-      <ArcSeam half="bottom" side="left" />
       <div className="max-w-5xl mx-auto text-center">
         <Reveal>
           <p className="eyebrow text-taupe">About Interior Alchemist</p>
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="headline text-ink text-[clamp(2.6rem,6.5*var(--vw),5.5rem)] mt-8">
-            We design <em>emotionally</em> refined homes for people who want <em>more</em> than ordinary interiors — and we <em>build</em> them too
+            We don&apos;t just design <em>spaces.</em> We give them an <em>identity.</em>
           </h2>
         </Reveal>
         <Reveal delay={0.2}>
-          <p className="mt-10 max-w-2xl mx-auto text-taupe text-base md:text-lg leading-relaxed">
-            Interior Alchemist designs and executes living spaces for modern homeowners. One studio handles the concept, the materials, the timeline and the site, so the home you imagined is the home you move into.
-          </p>
+          <div className="mt-10 max-w-2xl mx-auto space-y-5 text-taupe text-base md:text-lg leading-relaxed">
+            <p>
+              Every home begins with an idea. We create one for yours, drawn from your personality and the way you live, and shape every material, light, and detail around it.
+            </p>
+            <p>
+              And because we design and execute every project, the concept doesn&apos;t remain on paper. We bring it to life, exactly as envisioned.
+            </p>
+          </div>
         </Reveal>
 
         <Reveal delay={0.25} className="mt-16">

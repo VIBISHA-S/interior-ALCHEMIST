@@ -33,7 +33,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section className="relative isolate overflow-hidden bg-sand py-20 md:py-36 px-6 md:px-10" id="portfolio">
+    <section className="relative isolate overflow-hidden bg-cream py-20 md:py-36 px-6 md:px-10" id="portfolio">
       <Shape kind="pinwheel" className="left-[3%] bottom-10 w-[clamp(5.625rem,9*var(--vw),8.75rem)]" />
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
         <div className="lg:col-span-7">
@@ -42,13 +42,14 @@ export default function Projects() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="headline text-ink text-[clamp(2.8rem,6.5*var(--vw),6rem)] mt-8">
-              Homes that <em>feel</em> as good as they <em>look</em>
+              Every home begins with a different <em>story.</em>
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="mt-8 max-w-lg text-taupe leading-relaxed">
-              Every project is designed around the homeowner’s lifestyle, taste and daily routine, then built by the same team that drew it.
-            </p>
+            <div className="mt-8 max-w-lg space-y-4 text-taupe leading-relaxed">
+              <p>No two people live the same way. So why should their homes look the same?</p>
+              <p>Every project starts with its own concept, shaped by the people who will live there.</p>
+            </div>
           </Reveal>
 
           <ul className="mt-14 border-t border-ink/30">
@@ -76,7 +77,7 @@ export default function Projects() {
 
         {/* Film-strip frame, as on the reference's portfolio block */}
         <Reveal className="lg:col-span-5 flex lg:justify-end" delay={0.15}>
-          <div className="w-[16.25rem] md:w-[18.75rem] border border-ink/60 bg-cream p-2.5 space-y-2.5 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.5)]">
+          <div className="w-[16.25rem] md:w-[18.75rem] border border-ink/60 bg-blush p-2.5 space-y-2.5 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.5)]">
             {projects.map((p) => (
               <div key={p.image} className="group relative aspect-[4/5] overflow-hidden">
                 <Image src={p.image} alt={p.alt} fill sizes="300px" className="photo" />

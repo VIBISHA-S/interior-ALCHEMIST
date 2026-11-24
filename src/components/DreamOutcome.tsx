@@ -4,11 +4,11 @@ import Reveal from "./Reveal";
 import Shape from "./Shape";
 
 const outcomes = [
-  { title: "Intentional details", text: "Walk into a home where every finish and element feels like it belongs." },
-  { title: "Effortless storage", text: "Smart layouts and bespoke storage that eliminate daily clutter." },
-  { title: "Mood-enhancing lighting", text: "Lighting that moves from bright workspace to cosy lounge." },
-  { title: "Premium materials", text: "Natural stone, rich woods and tactile fabrics chosen to feel premium to the touch." },
-  { title: "A layout built around your life", text: "Spaces planned around the way you live, cook, work and relax." },
+  { title: "A distinct design identity", text: "One central concept connects every room, giving your home a character of its own." },
+  { title: "Storage, made invisible", text: "Custom storage built into the design, so every room stays clear and calm." },
+  { title: "Lighting that creates atmosphere", text: "From bright, energising mornings to warm, relaxing evenings, lighting designed around how you live." },
+  { title: "Materials with character", text: "Stone, wood and fabrics chosen for depth, warmth and how they feel to the touch." },
+  { title: "Designed around your lifestyle", text: "How you cook, entertain, relax and spend time with your family shapes every space." },
 ];
 
 export default function DreamOutcome() {
@@ -36,11 +36,11 @@ export default function DreamOutcome() {
 
         <div className="lg:col-span-7">
           <Reveal>
-            <p className="eyebrow text-taupe">The outcome</p>
+            <p className="eyebrow text-taupe">Outcome of Alchemist process</p>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="headline text-ink text-[clamp(2.8rem,6*var(--vw),5.5rem)] mt-8">
-              A home that <em>feels</em> beautiful to experience <em>every</em> single day
+              A home that feels <em>beautiful,</em> personal, and uniquely <em>yours.</em> Every single day.
             </h2>
           </Reveal>
           <ul className="mt-12 border-t border-l border-ink/20 pl-5">
